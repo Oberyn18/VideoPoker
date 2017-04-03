@@ -48,7 +48,67 @@ public class Carta {
 	 */
 	@Override
 	public java.lang.String toString(){
-		
-		return "Hola";
+		String printable;
+		int sizeAux;
+		printable = "*************\n";
+		// LINE 2
+		printable += "*";
+		printable += this.getValor();
+		sizeAux = this.getValor().length();
+		if(sizeAux == 1){
+			printable += "          *\n";
+		}else{
+			printable += "         *\n";
+		}
+		// LINE 3
+		printable += "*";
+		printable += this.getNaipe() + "          *\n";
+		// LINE 4
+		printable += "*           *\n";
+		// LINE 5
+		printable += "*";
+		String naipeNome = "";
+		switch(this.getNaipe()){
+		case 'P':
+				sizeAux = 4;
+				naipeNome = "PAUS";
+				break;
+		case 'C':
+				sizeAux = 5;
+				naipeNome = "COPAS";
+				break;
+		case 'E':
+				sizeAux = 7;
+				naipeNome = "ESPADAS";
+				break;
+		case 'O':
+				sizeAux = 5;
+				naipeNome = "OUROS";
+				break;
+		}
+		for(int i = 0; i < (11-sizeAux)/2; i++){
+			printable += " ";
+		}
+		printable += naipeNome;
+		for(int i = (11-sizeAux)/2; i < (11-sizeAux); i++){
+			printable += " ";
+		}
+		printable += "*\n";
+		// LINE 6
+		printable += "*           *\n";
+		// LINE 7
+		printable += "*          ";
+		printable += this.getNaipe() + "*\n";
+		// LINE 8
+		sizeAux = this.getValor().length();
+		if(sizeAux == 1){
+			printable += "*          ";
+		}else{
+			printable += "*         ";
+		}
+		printable += this.getValor() + "*\n";
+		// LINE 9
+		printable += "*************\n";
+		return printable;
 	}
 }

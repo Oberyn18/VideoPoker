@@ -39,10 +39,41 @@ public class Baralho {
 		*/
 	}
 	
-	/*
+	/**
+	 * Esta funcion permite obter uma carta do baralho aleatoriamente, sem repetir as mismas cartas que jogador já possui.
+	 * @param cards Um arreglo de cartas que já possui o jogador.
+	 * @return Uma carta aleatoria do baralho que nao é repetida.
+	 */
+	public Carta getRandomCard(Carta[] cards){
+		Random r = new Random();
+		boolean band = false;
+		int index = -1;
+		while(!band){
+			boolean found = false;
+			index = 1 + r.getIntRand(52);
+			for(int i = 0; i < cards.length; i++){
+				if(cartas[index] == cards[i]){
+					found = true;
+				}
+			}	
+			if(found == false){
+				band = true;
+			}
+		}
+		return cartas[index];
+	}
+	
+	/**
+	 * Esta funcion permite obter uma carta aleatoria do baralho.
+	 * @return Uma carta aleatoria do baralho.
+	 */
+	public Carta getRandomCard(){
+		Random r = new Random();
+		return cartas[1 + r.getIntRand(52)];
+	}
+	
 	public static void main(java.lang.String[] args){
 		Baralho b = new Baralho();
-		
+		System.out.println(b.getRandomCard());
 	}
-	*/
 }
